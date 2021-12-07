@@ -77,10 +77,9 @@ public class FetchPrice extends AsyncTask<String, Void, String> {
             jsonObject = new JSONObject(s);
             //get json array
             itemsArray = jsonObject.getJSONArray("data");
-            //loop through array until you find a cryptocoin and price
-            //-------for (int i=0;i < itemsArray.length(); i++) {
+           
                 // Get a json object from array
-                JSONObject priceObj = itemsArray.getJSONObject(0);
+                JSONObject priceObj = itemsArray.getJSONObject(0); //----------HERE IS WHERE YOU CHANGE THE INDEX PLACE TO MATCH THE LOCATION OF EACH CRYPTO IN THE API ARRAY
                 //get PriceUSD key
                 String quote = priceObj.getString("priceUsd");
 
@@ -88,7 +87,7 @@ public class FetchPrice extends AsyncTask<String, Void, String> {
                 price += quote + "\n";
                 Log.d("FetchPrice","Price is "+ price);
 
-            //--------}
+           
             mCrytoPrice.get().setText(price);
         } catch (Exception e) {
             mCrytoPrice.get().setText("No Results");
